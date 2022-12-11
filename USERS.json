@@ -1,0 +1,36 @@
+
+{
+    "password": "SlyF0x@87",
+    "accountNumber": 7195833323,
+    "pin": 1234,
+    "emailAddress": "ajsly87@gmail.com",
+    "phoneNumber": "09056539717",
+    "id": "45c17876-adf9-42bb-a81e-6de02ea6e1c7"
+}
+
+{
+    "id": "3c31fa73-9acc-44a6-8b32-e754af0f2829",
+    "firstName": "Samuel",
+    "lastName": "Olatunbosun",
+    "email": "samuel87@gmail.com",
+    "password": "SlyF0x@87",
+    "phoneNumber": "08034252522",
+    "account": {
+        "accountNumber": "0969485495"
+    }
+}
+
+{
+    "id": "3c31fa73-9acc-44a6-8b32-e754af0f2829",
+    "firstName": "Samuel",
+    "lastName": "Olatunbosun",
+    "email": "mutiat@gmail.com",
+    "password": "Mutiat@1",
+    "phoneNumber": "08034252522",
+    "account": {
+        "accountNumber": 0645200323,
+        "pin": 0000
+    }
+}
+
+

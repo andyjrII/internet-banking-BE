@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  firstName      String
+  lastName       String
+  profilePicture String?
+  dateOfBirth    DateTime
+  gender         Gender
+  email          String   @unique
+  phoneNumber    String   @unique
+  address        String
+  password       String?
+  account        Account?
+  refreshToken   String?
+}
+
+model Account {
+  id             String        @id @default(uuid())
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  accountNumber  String        @unique
+  accountType    AccountType   @default(SAVINGS)
+  accountBalance Decimal       @default(1000) @db.Money
+  pin            String
+  user           User          @relation(fields: [userId], references: [id])
+  userId         String        @unique
+  transactions   Transaction[]
+}
+
+model Transaction {
+  id              Int             @id @default(autoincrement())
+  transactionDate DateTime        @default(now())
+  transactionType TransactionType
+  transferTo      String
+  transferFrom    Account?        @relation(fields: [accountId], references: [id])
+  accountId       String?
+  amount          Decimal         @db.Money
+  status          Status
+  description     String
+  particulars     String
+}
+
+enum AccountType {
+  SAVINGS
+  CURRENT
+  FIXED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+}
+
+enum Status {
+  FAILED
+  SUCCESSFUL
+}
